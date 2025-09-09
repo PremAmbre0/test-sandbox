@@ -1,0 +1,29 @@
+{
+  "name": "vite-federation-workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.9.2",
+  "workspaces": [
+    "shell-app",
+    "demo-one-app",
+    "demo-two-app",
+    "demo-three-app",
+    "demo-counter-app"
+  ],
+  "scripts": {
+    "dev": "dotenv -e .env.local -- turbo run dev --parallel",
+    "build": "dotenv -e .env.local -- turbo run build",
+    "preview": "dotenv -e .env.local -- turbo run preview --parallel",
+    "clean": "turbo run clean",
+    "install-all": "npm install && turbo run install",
+    "install:clean": "npm run clean && rm -rf node_modules package-lock.json && npm install",
+    "get-preview-urls": "node scripts/get-preview-urls.js",
+    "update-env-codesandbox": "node scripts/get-preview-urls.js --update",
+    "test-codesandbox": "node scripts/test-codesandbox-simulation.js"
+  },
+  "devDependencies": {
+    "@codesandbox/utils": "^1.0.2",
+    "dotenv-cli": "^7.3.0",
+    "turbo": "^2.5.5"
+  }
+}
